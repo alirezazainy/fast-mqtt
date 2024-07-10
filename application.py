@@ -1,5 +1,5 @@
 from fastapi import FastAPI, status
-from Model.schemas import RequestModel, ResponseModel
+from Models.schemas import RequestModel, ResponseModel
 from Modules.mqtt_publisher import send, run
 
 app = FastAPI()
