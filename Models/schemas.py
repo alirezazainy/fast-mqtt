@@ -17,6 +17,7 @@ class ResponseModel(BaseModel):
     topic: str
     message: str
     status_code: int
+    method: str
     class Config:
         orm_mode = True
     
