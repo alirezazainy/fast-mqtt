@@ -4,11 +4,10 @@ from Modules.mqtt_publisher import send, run
 
 app = FastAPI()
 
-STARTUP_STATUS = {}
 
 @app.on_event("startup")
 async def on_startup():
-   STARTUP_STATUS = await run()
+   await run()
 
 @app.post("/", response_model=ResponseModel)
 async def post(request: RequestModel) -> ResponseModel:
