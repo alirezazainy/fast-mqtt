@@ -3,6 +3,8 @@ from Models.schemas import RequestModel, ResponseModel
 from Modules.mqtt_publisher import send, run
 #TODO: generate new request for get all entities from database 
 #TODO: generate controllers
+#TODO: complete fastapi write examples for swagger ui and redoc for better documenting and add doc strings
+#TODO: generate mkdocs documenting
 
 app = FastAPI()
 
