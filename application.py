@@ -1,6 +1,8 @@
 from fastapi import FastAPI, status
 from Models.schemas import RequestModel, ResponseModel
 from Modules.mqtt_publisher import send, run
+#TODO: generate new request for get all entities from database 
+#TODO: generate controllers
 
 app = FastAPI()
 

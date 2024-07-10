@@ -40,16 +40,16 @@ def connect_mqtt() -> mqtt_client.Client:
     Returns:
         mqtt_client.Client: type of mqtt client for messaging
     """
-    def on_connect(client, userdata, flags, response_code, properties):
+    def on_connect(client, user_data, flags, response_code, properties):
         """
         This function sets connection credentials for client on first connecting time and control connection
 
         Args:
-            client (_type_): type of mqtt client for messaging
-            userdata (_type_): client credentials
-            flags (_type_): flags for messaging
-            response_code (_type_): response code of first connection
-            property (_type_): properties of client connection
+            client (mqtt_client.Client): type of mqtt client for messaging
+            user_data : client credentials
+            flags : flags for messaging
+            response_code : response code of first connection
+            property : properties of client connection
         """
         RESULT.update({"response_code": response_code})
         if response_code == 0:
