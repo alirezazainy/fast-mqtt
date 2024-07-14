@@ -3,6 +3,8 @@ import time
 
 from paho.mqtt import client as mqtt_client
 from paho.mqtt.enums import CallbackAPIVersion
+# MQTT_Publisher Module
+
 
 # Define results dictionary
 RESULT = {
@@ -32,7 +34,7 @@ RESULT.update({"client_id": client_id})
 # username = 'emqx'
 # password = 'public'
 
-
+# Client and Connection Generator functions
 def connect_mqtt() -> mqtt_client.Client:
     """
     This function sets server credentials for client to connecting together
@@ -40,7 +42,7 @@ def connect_mqtt() -> mqtt_client.Client:
     Returns:
         mqtt_client.Client: type of mqtt client for messaging
     """
-    def on_connect(client, user_data, flags, response_code, properties):
+    def on_connect(client, user_data, flags, response_code, properties) -> None:
         """
         This function sets connection credentials for client on first connecting time and control connection
 
@@ -77,16 +79,16 @@ def publish(client: mqtt_client.Client, message: str) -> str:
     """
     published_message = f"messages: {message}"
     result = client.publish(RESULT.get("topic"), published_message)
-    # result: [0, 1]
+    # result is an array with two elements: [0, 1]
     status = result[0]
     if status == 0:
         return f"Send `{published_message}` to topic `{RESULT.get("topic")}`"
     else:
         return f"Failed to send message to topic {RESULT.get("topic")}"
  
- # Define a client
+# Define a client
 CLIENT = connect_mqtt()
-async def run() -> dict:
+async def connect_mqtt_broker() -> None:
     """
     This function runs a mqtt connection and set a connection living loop
 
@@ -94,9 +96,8 @@ async def run() -> dict:
         dict: returns the connection result dictionary
     """
     CLIENT.loop_start()
-    return RESULT
 
-async def send(message: str) -> str:
+async def send_message(message: str) -> str:
     """
     This function send a message to publish and send to broker
 

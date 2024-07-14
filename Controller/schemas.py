@@ -1,11 +1,13 @@
 from pydantic import BaseModel
 #TODO: generate new classes for base models of req and res and new models for other jobs
-class RequestModel(BaseModel):
+class RequestBaseModel(BaseModel):
     """
     This class sets request rules for fastapi requesting system
     inherits from pydantic base model
     """
-    message: str
+    id : int
+    imei: str
+    micro_op: str
     class Config:
         orm_mode = True
     
