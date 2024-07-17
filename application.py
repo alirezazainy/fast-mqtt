@@ -66,7 +66,7 @@ async def message(imei: str, micro_op: str, db: Session = Depends(get_db)):
     request.micro_op = micro_op
     data = save_message(db, request)
     if not data:
-        raise HTTPException(status.WS_1005_NO_STATUS_RCVD, "Something went wrong")
+        raise HTTPException(status.HTTP_406_NOT_ACCEPTABLE, "Something went wrong")
     else:
         result = await send_message(f"{request.imei}/{request.micro_op}")
         raise HTTPException(status.HTTP_201_CREATED, result)
