@@ -16,10 +16,9 @@ class ResponseModel(BaseModel):
     This class sets response rules for fastapi responding system
     inherits from pydantic base model
     """
-    topic: str
-    message: str
-    status_code: int
-    method: str
+    imei: str
+    micro_op: str
+
     class Config:
         orm_mode = True
     

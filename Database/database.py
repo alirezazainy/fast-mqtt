@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 # Create Database SQLAlchemy Engine
 engine = create_engine(
-    "postgresql://postgres:@localhost/fast-mqtt")
+    "postgresql://postgres:@localhost:5433/fast-mqtt")
 # Create Base Class of Database
 Base = declarative_base()
 # Create Database Session

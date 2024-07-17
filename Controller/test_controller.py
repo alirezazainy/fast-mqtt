@@ -1,23 +1,21 @@
 from sqlalchemy.orm import Session
-from schemas import RequestBaseModel
-from ..Models import crud
+from Controller.schemas import RequestBaseModel
+from Models import crud
 
 def get_all_messages(db: Session):
     try:
         messages = crud.read(db)
         if not messages:
             error = True
-        yield error
-        yield messages
+        return messages
     except error:
-        yield error
+        return error
 
 def save_message(db:Session, request: RequestBaseModel):
     try:
-        messages = crud.create(db, request)
-        if not messages:
+        result = crud.create(db, request)
+        if not result:
             error = True
-        yield error
-        yield messages
+        return result
     except error:
         return error

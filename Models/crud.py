@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from .models import Messages
-from ..Controller.schemas import RequestBaseModel
+from Models.models import Messages
+from Controller.schemas import RequestBaseModel
 # CRUD ORM functions
 
 def create(db: Session, request: RequestBaseModel):
@@ -11,6 +11,7 @@ def create(db: Session, request: RequestBaseModel):
     db.add(message)
     db.commit()
     db.refresh(message)
+    return True
 
 def read(db: Session, request: RequestBaseModel | None = None):
     if request is not None:
