@@ -15,7 +15,7 @@ app = FastAPI(
     title="Fast-MQTT",
     summary="Fast MQTT web API messenger based on FastAPI",
     description="Faster and newer than other",
-    version="0.5.6",
+    version="0.9",
 )
 # Include routers
 app.include_router(messaging.router)
