@@ -63,6 +63,7 @@ def connect_mqtt() -> mqtt_client.Client:
     # client.username_pw_set(username, password)
     client.on_connect = on_connect
     client.connect(RESULT.get("broker_server"), RESULT.get("port"))
+    print(RESULT.get("response_message"))
     return client
 
 
@@ -88,23 +89,4 @@ def publish(client: mqtt_client.Client, message: str) -> str:
  
 # Define a client
 CLIENT = connect_mqtt()
-async def connect_mqtt_broker() -> None:
-    """
-    This function runs a mqtt connection and set a connection living loop
 
-    Returns:
-        dict: returns the connection result dictionary
-    """
-    CLIENT.loop_start()
-
-async def send_message(message: str) -> str:
-    """
-    This function send a message to publish and send to broker
-
-    Args:
-        message (str): mqtt operation
-
-    Returns:
-        str: returns a published message string
-    """
-    return publish(CLIENT, message)

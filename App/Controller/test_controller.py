@@ -1,10 +1,14 @@
 from sqlalchemy.orm import Session
-from .schemas import RequestBaseModel
-from ..Models.models import Messages
+
+from ..Modules.mqtt_publisher import CLIENT, publish
+from .schemas import MessageBaseModel
+from ..Models.models import Message
 from ..Models import crud
+
 # Application controller layer
 
-def get_all_messages(db: Session) -> list[Messages] | Messages | bool:
+
+def get_all_messages(db: Session) -> list[Message] | Message | bool:
     """
     This function use database orm read function to try giving data from database
 
@@ -12,30 +16,63 @@ def get_all_messages(db: Session) -> list[Messages] | Messages | bool:
         db (Session): database session with orm session type
 
     Returns:
-        list[Messages] | Messages | bool: a list of messages or a message or boolean
+        list[Message] | Message | bool: a list of messages or a message or boolean
     """
-    try: # try connecting database and give data
+    try:  # try connecting database and give data
         messages = crud.read(db)
-        if not messages:# handling error
+        if not messages:  # handling error
             not_error = False
         return messages
     except not_error:
         return not_error
 
-def save_message(db:Session, request: RequestBaseModel) -> bool:
+
+def save_message(db: Session, request: MessageBaseModel) -> bool:
     """
     This function use database orm create function to try saving data to database
 
     Args:
         db (Session): database session with orm session type
-        request (RequestBaseModel): request base model
+        request (MessageBaseModel): request base model
 
     Returns:
         bool: result of saving data with True or False value
     """
-    try:# try connecting database and save data
+    try:  # try connecting database and save data
         result = crud.create(db, request)
-        if not result:# handling error
+        if not result:  # handling error
+            not_error = False
+        return result
+    except not_error:
+        return not_error
+
+
+async def connect_mqtt_broker() -> None | bool:
+    """
+    This function runs a mqtt connection and set a connection living loop
+
+    """
+    try:
+        result = CLIENT.loop_start()
+        if not result:
+            not_error = False
+    except not_error:
+        return not_error
+
+
+async def send_message(message: str) -> str | bool:
+    """
+    This function send a message to publish and send to broker
+
+    Args:
+        message (str): mqtt operation
+
+    Returns:
+        str: returns a published message string
+    """
+    try:
+        result = publish(CLIENT, message)
+        if not result:
             not_error = False
         return result
     except not_error:

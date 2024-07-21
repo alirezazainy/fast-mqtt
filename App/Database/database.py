@@ -1,12 +1,12 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
 # Database Generator
 
 
 # Create Database SQLAlchemy Engine
-engine = create_engine(
-    "postgresql://postgres:@localhost:5433/fast-mqtt")
+engine = create_engine("postgresql://postgres:@localhost:5433/fast-mqtt")
 # Create Base Class of Database
 Base = declarative_base()
 # Create Database Session
