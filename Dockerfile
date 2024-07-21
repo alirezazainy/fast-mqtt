@@ -9,6 +9,8 @@ RUN pip install -r requirements.txt
 
 COPY . /src/
 
+RUN cd App
+
 EXPOSE 8000
 
-CMD [  ]
+CMD [ "fastapi", "run" ]
