@@ -1,0 +1,49 @@
+site_name: My Docs
+site_url: https://samacontrol.com
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+theme: 
+  name: material
+  palette: 
+    scheme: slate
+    primary: green
+    accent: green
+  font: 
+    text: Noto Sans Arabic
+  language: fa
+  logo: assets/favicon.png
+  icon:
+    top: fontawesome/solid/angle-up
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+    - toc.integrate
+    - content.tabs.link
+    - content.tooltips
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+nav:
+  - Fast-MQTT: index.md
+  - آموزش: 
+      آموزش/index.md
