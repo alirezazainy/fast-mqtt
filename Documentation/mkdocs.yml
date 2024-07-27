@@ -1,4 +1,4 @@
-site_name: My Docs
+site_name: اسناد و راهنمای پروژه Fast-MQTT
 site_url: https://samacontrol.com
 markdown_extensions:
   - admonition
@@ -9,7 +9,7 @@ theme:
   palette: 
     scheme: slate
     primary: green
-    accent: green
+    accent: deep orange
   font: 
     text: Noto Sans Arabic
   language: fa
@@ -46,4 +46,5 @@ theme:
 nav:
   - Fast-MQTT: index.md
   - آموزش: 
-      آموزش/index.md
+    - آموزش/index.md
+
