@@ -44,7 +44,10 @@ theme:
     - content.code.copy
     - content.code.select
 nav:
-  - Fast-MQTT: index.md
+  - صفحه اصلی: index.md
   - آموزش: 
-    - آموزش/index.md
+    - learn.md
+  - اسناد پروژه: 
+    - doc.md
+
 
