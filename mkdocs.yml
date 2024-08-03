@@ -12,6 +12,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 theme: 
   name: material
   palette: 
@@ -55,11 +58,17 @@ theme:
     - content.code.select
     - navigation.footer
 nav:
-  - صفحه اصلی: index.md
+  - صفحه اصلی: 
+    - index.md
   - آموزش: 
     - learn.md
-  - اسناد پروژه: 
-    - doc.md
+  - اسناد پروژه:
+    - how_what.md
+    - مستندات فنی:
+      - معماری: ./eng_docs/architecture.md
+      - دیتابیس و مدل ها: ./eng_docs/db_and_models.md
+      - کنترلر و ماژول ها: ./eng_docs/controller.md
+      - روتر ها: ./eng_docs/router.md
 extra:
   version:
     provider: mike
