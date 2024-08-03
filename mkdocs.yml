@@ -1,5 +1,4 @@
 site_name: اسناد و راهنمای پروژه Fast-MQTT
-site_url: https://samacontrol.com
 markdown_extensions:
   - admonition
   - pymdownx.details
