@@ -64,11 +64,14 @@ nav:
     - learn.md
   - اسناد پروژه:
     - how_what.md
+    - target.md
+    - بررسی چگونگی عملکرد:
+      - معماری: ./overview/architecture.md
+      - دیتابیس و مدل ها: ./overview/db_and_models.md
+      - کنترلر و ماژول ها: ./overview/controller.md
+      - روتر ها: ./overview/router.md
     - مستندات فنی:
-      - معماری: ./eng_docs/architecture.md
-      - دیتابیس و مدل ها: ./eng_docs/db_and_models.md
-      - کنترلر و ماژول ها: ./eng_docs/controller.md
-      - روتر ها: ./eng_docs/router.md
+      - ./eng_docs/index.md
 extra:
   version:
     provider: mike
