@@ -13,4 +13,4 @@ RUN cd App
 
 EXPOSE 8000
 
-CMD [ "fastapi", "run" ]
+CMD [ "fastapi", "run", "./App/application.py" ]
