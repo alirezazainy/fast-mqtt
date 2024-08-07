@@ -51,6 +51,8 @@ async def connect_mqtt_broker() -> None | bool:
     """
     This function runs a mqtt connection and set a connection living loop
 
+    Returns:
+        None | bool: None or False
     """
     try:
         result = CLIENT.loop_start()
@@ -60,18 +62,19 @@ async def connect_mqtt_broker() -> None | bool:
         return not_error
 
 
-async def send_message(message: str) -> str | bool:
+async def send_message(request: MessageBaseModel) -> str | bool:
     """
     This function send a message to publish and send to broker
 
     Args:
-        message (str): mqtt operation
+        request (MessageBaseModel): request base model
 
     Returns:
-        str: returns a published message string
+        str | bool: returns a published message string or a boolean variable
     """
     try:
-        result = publish(CLIENT, message)
+
+        result = publish(CLIENT, request.micro_op, request.imei)
         if not result:
             not_error = False
         return result

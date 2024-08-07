@@ -22,14 +22,12 @@
 در روتر `Messaging` یک `API` وجود دارد که از طریق فراخوانی مسیر `/messaging/send` ابتدا پیام مورد نظر را دریافت کرده و به تابع `send_message` در حالت `Await` می دهد تا این تابع برود و این پیام را به تابع فرستنده به کمک کنترلر برساند.
 
 === "کد فایل messaging.py" 
-    ```{.py hl_lines="5-7" .no-copy}
+    ```{.py hl_lines="5" .no-copy}
     @router.post("/send")
     async def send_and_save_massage(
         request: MessageBaseModel, db: Session = Depends(get_db)
     ):
-        result = await send_message(
-            f"{request.imei}/{request.micro_op}"
-        )  # -> sending message
+        result = await send_message(request)  # -> sending message
         if result is not str:
             # send request to database for saving
             data = save_message(db, request)
@@ -46,14 +44,12 @@
 به همین منظور پس از بررسی، داده را به تابع `save_message` می دهیم تا به کمک کنترلر برود و داده را در دیتابیس پروژه ذخیره سازی کند.
 
 === "کد فایل messaging.py" 
-    ```{.py hl_lines="8-14" .no-copy}
+    ```{.py hl_lines="6-12" .no-copy}
     @router.post("/send")
     async def send_and_save_massage(
         request: MessageBaseModel, db: Session = Depends(get_db)
     ):
-        result = await send_message(
-            f"{request.imei}/{request.micro_op}"
-        )  # -> sending message
+        result = await send_message(request)  # -> sending message
         if result is not str:
             # send request to database for saving
             data = save_message(db, request)

@@ -28,9 +28,7 @@ async def send_and_save_massage(
         HTTPException: 406 not acceptable request
         HTTPException: 201 create and send message
     """
-    result = await send_message(
-        f"{request.imei}/{request.micro_op}"
-    )  # -> sending message
+    result = await send_message(request)  # -> sending message
     if result is not str:
         # send request to database for saving
         data = save_message(db, request)

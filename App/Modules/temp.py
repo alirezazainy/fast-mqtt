@@ -24,9 +24,9 @@ RESULT = {
 # # # username = 'emqx'
 # # # password = 'public'
 
-RESULT.update({"broker_server": 'mqtt.samacontrol.com'})
-RESULT.update({"port": 31512})
-RESULT.update({"topic": "SAMA/"})
+RESULT.update({"broker_server": 'broker.emqx.io'})
+RESULT.update({"port": 1883})
+RESULT.update({"topic": "python/mine"})
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 RESULT.update({"client_id": client_id})
@@ -66,27 +66,25 @@ def connect_mqtt() -> mqtt_client.Client:
     return client
 
 
-def publish(client: mqtt_client.Client, message: str, topic: str) -> str | bool:
+def publish(client: mqtt_client.Client, message: str) -> str:
     """
     This function publish a message and send it to broker
 
     Args:
         client (mqtt_client.Client): type of mqtt client for messaging
         message (str): mqtt operation
-        topic (str): a string imei for topic
 
     Returns:
-        str | bool: returns a published message string or False
+        str: returns a published message string
     """
-    published_topic = f"{RESULT.get("topic")}{topic}"
-    published_message = f"{message}"
-    result = client.publish(published_topic, published_message)
+    published_message = f"messages: {message}"
+    result = client.publish(RESULT.get("topic"), published_message)
     # result is an array with two elements: [0, 1]
     status = result[0]
     if status == 0:
-        return f"Send `{published_message}` to topic `{published_topic}`"
+        return f"Send `{published_message}` to topic `{RESULT.get("topic")}`"
     else:
-        return False
+        return f"Failed to send message to topic {RESULT.get("topic")}"
  
 # Define a client
 CLIENT = connect_mqtt()
