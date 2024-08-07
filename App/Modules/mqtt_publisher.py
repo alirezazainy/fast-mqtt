@@ -24,9 +24,9 @@ RESULT = {
 # # # username = 'emqx'
 # # # password = 'public'
 
-RESULT.update({"broker_server": 'mqtt.samacontrol.com'})
-RESULT.update({"port": 31512})
-RESULT.update({"topic": "SAMA/"})
+RESULT.update({"broker_server": 'broker.emqx.io'})
+RESULT.update({"port": 1883})
+RESULT.update({"topic": "mine/"})
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 RESULT.update({"client_id": client_id})
